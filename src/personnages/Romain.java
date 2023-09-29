@@ -7,7 +7,9 @@ public class Romain {
 	public Romain(String nom, int force) {
 		super();
 		this.nom = nom;
+		assert force > 0;
 		this.force = force;
+		
 	}
 
 	@Override
@@ -32,6 +34,8 @@ public class Romain {
 		return "Le romain " + getNom() + " : ";
 	}
 	public void recevoirCoup(int forceCoup) {
+		assert force > 0;
+		int forcedebut = force;
 		force -= forceCoup;
 		if (force > 0) {
 			parler("Aïe");
@@ -39,12 +43,12 @@ public class Romain {
 		 else {
 				parler("J'abandonne...");
 		}
-		
+		assert force < forcedebut;
 	}
 	public static void main(String[] args) {
-		Romain romus  = new Romain("romus", 15);
-		romus.prendreParole();
-		romus.parler("Ave César !");
-		romus.recevoirCoup(15);
+		Romain minus  = new Romain("minus", 6);
+		minus.prendreParole();
+		minus.parler("Ave César !");
+		minus.recevoirCoup(15);
 	}
 }
